@@ -1,0 +1,190 @@
+<a href="index.html">back</a>
+<html>
+    <head>
+        <title>.......</title>
+    </head>
+    <style>
+        #prodect_name_lable{
+            font-size: 30px;
+            font-family: sans-serif;
+            position: absolute;
+            left: 500px;
+            top: 89px;
+        }
+        #img_type{
+            height: 300px;
+            width: 350px;
+        }
+        #Product_contet_lable{
+            font-size: 20px;
+            font-family: system-ui;
+            position: absolute;
+            top: 135px;
+            left: 500px;
+        }
+        #oriprice{
+            position: absolute;
+            top: 200px;
+            left: 500px;
+            font-size: 25px;
+            text-decoration: line-through;
+            color: gray;
+        }
+        #offerdiscount{
+            position: absolute;
+            top: 200px;
+            left: 680px;
+            font-size: 25px;
+            color: black;
+        }
+        .dsO{
+            position: absolute;
+            top: 228px;
+            left: 501px;
+            color: orange;
+            font-family: fantasy;
+
+        }
+        .dsS{
+            position: absolute;
+            top: 228px;
+            left: 680px;
+            color: green;
+            font-family: fantasy;
+        }
+        .btns1{
+            position: absolute;
+            left: 600px;
+            top: 320px;
+            padding: 8px;
+        }
+        .btns2{
+            position: absolute;
+            left: 630px;
+            top: 320px;
+            padding: 8px;
+        }
+        .btns3{
+            position: absolute;
+            left: 660px;
+            top: 320px;
+            padding: 8px;
+        }
+        .items{
+            position: absolute;
+            top: 290px;
+            left: 575px;
+            font-size: 18px;
+            font-family: monospace;
+            color: rebeccapurple;
+        }
+        .addtocartbtn{
+            position: relative;
+            left: 725px;
+            top: 16px;
+            padding: 10px 10px 10px;
+            background: orange;
+            border-color: orange;
+            color: white;
+            font-size: 19px;
+            font-family: fantasy;
+            text-decoration: none;
+        }
+    </style>
+    <body>
+        <label id="prodect_name_lable"></label> 
+        <img src="" id="img_type"/>
+        <label id="Product_contet_lable"></label>
+        <lable id="oriprice"></lable>
+        <label class="dsO">original price</label>
+        <lable id="offerdiscount"></lable>
+        <label class="dsS">Sale price</label>
+        <div>
+            <label class="items">
+                product items
+            </label>
+            <button class="btns1" onclick="incrementButton()">+</button>
+            <button class="btns2"><span id="numberValue">1</span></button>
+            <button class="btns3" onclick="decrementButton()">-</button>
+        </div>
+        <div>
+            <a href="final.html" class="addtocartbtn" onclick="goToCartButton()">Go To Cart</a>
+        </div>
+
+
+    </body>
+</html>
+
+<script>
+    
+    var AB = localStorage.getItem('productName')
+    console.log(AB)
+    var getName = document.getElementById('prodect_name_lable').innerHTML=AB;
+    
+    window.onload = function() {
+    var imageData = localStorage.getItem("previewImage");
+    if (imageData) {
+        document.getElementById("img_type").src = imageData;
+    }
+
+    var getcontent = localStorage.getItem('productcontet')
+    var finalgetcontetn = document.getElementById('Product_contet_lable').innerHTML=getcontent;
+    console.log(finalgetcontetn)
+
+    var getoriginalprice = localStorage.getItem('original')
+    var finalgetoriginal = document.getElementById('oriprice').innerHTML=getoriginalprice;
+    console.log(finalgetoriginal)
+
+    var getoffer = localStorage.getItem('finaloffer')
+    var finalsale = document.getElementById('offerdiscount').innerHTML=getoffer;
+    console.log(getoffer)
+    
+    // var manimum = localStorage.getItem('mini')
+    // console.log(manimum)
+
+}
+var manimum = localStorage.getItem('mini')
+    console.log(manimum)
+
+    var value=1;
+    function incrementButton(){
+        if(value<manimum)
+        value++;
+        document.getElementById('numberValue').innerHTML=value;
+    }
+    function decrementButton(){
+    if(value>1){
+        value--;
+         document.getElementById('numberValue').innerHTML=value;
+    }
+    }
+
+    function goToCartButton(){
+        var tt=document.getElementById('numberValue').innerHTML;
+            localStorage.setItem('www',tt)
+         
+
+        var FNPRICE = document.getElementById('offerdiscount').value;
+            localStorage.setItem('lastprice',FNPRICE)
+            window.location.href = 'final.html';
+
+
+    }
+ console.log(albha)
+    
+</script>
+
+
+
+
+
+
+
+
+    
+    
+    
+       
+    
+    
+    

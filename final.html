@@ -1,0 +1,98 @@
+<html>
+    <head>
+        <title>........</title>
+    </head>
+    <style>
+        .h2_content{
+            font-size: 20px;
+            font-family: system-ui;
+            position: relative;
+            top: 33px;
+        }
+        #_lable{
+            position: relative;
+            left: 296px;
+        }
+        #_lable2{
+            position: relative;
+            left: 296px;
+        }
+        #_lable3{
+            position: relative;
+            left: 296px;
+        }
+        #_lable4{
+            position: relative;
+            left: 296px;
+        }
+        .the_payment{
+            position: relative;
+            top: 50px;
+            left: 110px;
+            padding: 10px 10px 10px 10px;
+            background-color: green;
+            color: white;
+            font-size: 17;
+            font-family: sans-serif;
+            border-color: green;
+            border-radius: 5px;
+        }
+        .the_payment:hover{
+            background-color: lightgreen;
+            color: white;
+            font-size: 17;
+            font-family: sans-serif;
+            border-color:lightgreen;
+            border-radius: 5px;
+        }
+        .over_all_div{
+
+
+        }
+
+    </style>
+    <body>
+        <div>
+                <h1>Final Product Delivery</h1>
+            <div class="over_all_div">
+                <h2 class="h2_content"> Price </h2>
+                <label id="_lable">0</label>
+            </div>
+            <hr>
+            <div>
+                <h2 class="h2_content">Product items</h2>
+                <label id="_lable2">0</label>
+                </div>
+                <hr>
+            <div>
+                <h2 class="h2_content"> Delivery Charge</h2>
+                <label id="_lable3" style="color:darkgreen">Free!</label>
+            </div>
+            <hr>
+
+            <div>
+                <h2 class="h2_content">Total Amount</h2>
+            <label id="_lable4"></label>
+            </div>
+            <div>
+            <button class="the_payment">Payment Method</button>
+            </div>
+            </div>
+
+</body>
+</html>
+<script>
+        // var ddd = localStorage.getItem('lastprice')
+        var getoffer = localStorage.getItem('finaloffer')
+        var ooo = document.getElementById('_lable').innerHTML=getoffer;
+
+        
+        var yy=localStorage.getItem('www')
+        var pp = document.getElementById('_lable2').innerHTML=yy;
+
+        var rr=getoffer*yy;
+        var hhh = document.getElementById('_lable4').innerHTML=rr;
+        console.log(getoffer)
+        console.log(yy)
+        console.log(rr)
+</script>

@@ -1,0 +1,251 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <style>
+        *{
+            /* margin: 0%;
+            padding: 0%; */
+        }
+        .prodect-name-top{
+            padding: 10px 20px 10px;
+            position: relative;
+            left: 20px;
+            top: 38px;
+        }
+        .card-img-top {
+            height: 100px;
+            width: 150px;
+            position: relative;
+            left: 35px;
+        }
+        .card {
+            position: relative;
+            left: 600px;
+            height: 700px;
+            border-style: solid;
+            box-shadow: 1px 1px 6px gray;
+            border-width: 1px;
+        }
+        .btn{
+            background: orangered;
+            padding: 10px 37px 10px;
+            text-decoration: none;
+            color: wheat;
+            font-family: system-ui;
+            font-weight: 700;
+            position: relative;
+            top: 135px;
+            left: 75px;
+        }
+        .btn:hover{
+            background: orange;
+        }
+        .card-body{
+            position: relative;
+            top: 50px;
+            left: 35px;
+        }
+        #image_error_content{
+            color: red;
+            display: none;
+        }
+        .lb-1{
+            position: relative;left: 21px;top: 12px;font-size: 18px;font-family: sans-serif;
+        }
+        #ChooseImageByUser{
+                    font-size: 13px;
+                    font-family: system-ui;
+                    padding: 20px;
+                    
+        }
+        #purchase-Content{
+            height: 100px; width: 250px;
+        }
+        #product_org_price{
+            position: relative;top: 70px;font-family: system-ui;
+        }
+        #_org_price{
+            position: relative;top: 70px;font-family: 
+                    system-ui;
+        }
+        .select_offer_option{
+            position: relative;top: 85px; font-family: system-ui;
+        }
+        #discount_type{
+            position: relative;top: 85px; font-family: system-ui;
+        }
+        #percentage_value{
+            position: relative;top: 100px;left: 85px;display: none;
+        }
+        #flat_value{
+            position: relative;top: 78px;left: 85px;display: none
+        }
+        #discount_price{
+            position: relative;top: 95px;font-family: system-ui;
+        }
+        #product_dis{
+            position: relative;top: 95px;font-family: system-ui;
+        }
+        #mini_product_value{
+            position: relative;top: 105px;font-family: system-ui;
+        }
+        #product_price{
+            position: relative;top: 105px;font-family: system-ui;
+        }
+
+    </style>
+    <body>
+        <div>
+            <h1 style="text-align: center;">
+                Add Product Details
+            </h1>
+        </div>
+        <section id="overAllSection">
+            <div class="card" style="width: 20rem;">
+                <div>
+                    <input type="text" placeholder="Prodect Name" id="ProdectNameByUser" class="prodect-name-top"/>
+                </div>
+                <div style="position: relative;top: 35px;">
+                    
+                    <lable class="lb-1">Choose Your Image-File<span id="image_error_content">*!!!</span></lable>
+                    
+                    <input type="file" placeholder="Choose Your Prodect" id="ChooseImageByUser" onchange="loadFile(event)" />
+                    
+                    <img id="output" class="card-img-top"/>
+                </div>
+                <div class="card-body">
+                  <textarea id="purchase-Content" placeholder="Prodect description here...." ></textarea>
+                </div>
+                <div>
+                    <label id="product_org_price">Orginal Price</label>
+                    
+                    <input type="text" placeholder="original price" id="_org_price">
+
+                </div>
+                <div>
+                    <label class="select_offer_option" >Select Offer</label>
+                        
+                    <select id="discount_type" onchange="discountTypeSelect(event)">
+                            <option value="" >discount type</option>
+                            <option  value="Percentage">Percentage %</option>
+                            <option  value="Flat">Flat</option>
+                    </select>
+                    <input type="text" value="" id="percentage_value" placeholder="Enter discount" onchange="perDiscount(event)"/>
+                    <input type="text" id="flat_value" placeholder="Enter flat Offer" onchange="flatDiscount(event)" />
+                    </div>
+                    <div>
+                        <label id="discount_price">Offer Price</label>
+                        
+                        <input type="number" disabled id="product_dis"/>
+                    </div>
+                    <div>
+                        <label id="mini_product_value">manimum product</label>
+                        
+                        <input type="text"  id="product_price" >
+                    </div>
+                <div>
+                    <a href="" target="_blank" class="btn btn-primary" onclick="addToCartForValidation()">Add to Cart</a>
+                    </div>
+              </div>
+        </section>
+    </body>
+</html>
+<script>
+    function perDiscount(event){
+        var per = document.getElementById('percentage_value').value;
+        var orPrice = document.getElementById('_org_price').value;
+        console.log(per)
+        console.log(orPrice)
+        if(per){
+            var storeToSellPer = orPrice*per/100;
+            var Ab = orPrice-storeToSellPer;
+        }
+        document.getElementById('product_dis').value=Ab;
+
+
+
+    }
+    function flatDiscount(event){
+        var flat = document.getElementById('flat_value').value;
+        var orPrice = document.getElementById('_org_price').value;
+        if(flat){
+            var storeToSellPer = orPrice-flat;
+        }
+        document.getElementById('product_dis').value=storeToSellPer;
+
+    }
+   
+    function addToCartForValidation(){
+         var ProductName = document.getElementById('ProdectNameByUser').value;
+         if(ProductName){
+            localStorage.setItem('productName',ProductName)
+            window.location.href = 'preview.html';
+            }
+
+            var Producutcontent = document.getElementById('purchase-Content').value;
+         if(Producutcontent){
+            localStorage.setItem('productcontet',Producutcontent)
+            window.location.href = 'preview.html';
+            }
+
+            var Pro_orininal = document.getElementById('_org_price').value;
+         if(Pro_orininal){
+            localStorage.setItem('original',Pro_orininal)
+            window.location.href = 'preview.html';
+            }
+
+            var offer = document.getElementById('product_dis').value;
+         if(offer){
+            localStorage.setItem('finaloffer',offer)
+            window.location.href = 'preview.html';
+            }
+
+            var mini = document.getElementById('product_price').value;
+         if(mini){
+            localStorage.setItem('mini',mini)
+            window.location.href = 'preview.html';
+            }
+
+        var typename = document.getElementById('ChooseImageByUser').value;
+        console.log('Name---------->', document.getElementById('ChooseImageByUser').value);
+        if(typename){
+            document.getElementById('image_error_content').style = "display:none;";
+        }else{
+            document.getElementById('image_error_content').style = "display: block;position: absolute;left: 210px;top: 0;";
+    }
+    var fileInput = document.getElementById("ChooseImageByUser");
+        var vv=fileInput.files.length > 0;
+        var file = fileInput.files[0];
+        var reader = new FileReader();
+        reader.onload = function(event) {
+            var imageData = event.target.result;
+            localStorage.setItem("previewImage", imageData);
+        };
+        reader.readAsDataURL(file);
+
+       }
+    function loadFile(event) {
+        var reader = new FileReader();
+        reader.onload = function(){
+        var output = document.getElementById('output');
+        output.src = reader.result;
+    }
+    reader.readAsDataURL(event.target.files[0]);
+        }
+  function discountTypeSelect(event){
+            var selecteddiscount = event.target.value;
+            console.log('selected',selecteddiscount);
+           
+        if(selecteddiscount == 'Percentage'){
+            document.getElementById('percentage_value').style = " display:block;position: relative;top: 85px;left: 85px;";
+        }else{
+            document.getElementById('percentage_value').style = " display:none;position: relative;top: 85px;left: 85px;";
+        }
+        if(selecteddiscount == 'Flat'){
+            document.getElementById('flat_value').style = " display:block;position: relative;top: 85px;left: 85px;";
+        }else{
+            document.getElementById('flat_value').style = " display:none;position: relative;top: 85px;left: 85px;";
+        }
+    }
+</script>
